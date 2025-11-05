@@ -3,6 +3,7 @@
 //! La57
 
 mod check;
+mod tree;
 
 use kernel::prelude::*;
 
@@ -42,6 +43,12 @@ impl kernel::Module for La57 {
                 "✗ 否"
             }
         );
+
+        if runtime_enabled {
+            tree::print_page_table_tree(5)
+        } else {
+            tree::print_page_table_tree(4)
+        }
 
         Ok(Self)
     }
